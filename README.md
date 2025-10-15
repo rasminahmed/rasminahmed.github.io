@@ -32,7 +32,7 @@
     <div class="contact">
       <h2>Contact</h2>
       <p>
-        Email: <a href="mailto:your-email@example.com">your-email@example.com</a>
+        Email: <a href="mailto:your-email@example.com">rasminahmed01@gmail.com</a>
       </p>
       <p>
         GitHub: <a href="https://github.com/rasminahmed">rasminahmed</a>
