@@ -21,7 +21,7 @@
     </p>
     <h2>About Me</h2>
     <p>
-      <!-- Add your bio here -->
+      My interests include Calisthenics training, Wellness, Travelling, Basketball
       I love exploring new technologies, collaborating on projects, and sharing what I learn.
     </p>
     <h2>Projects</h2>
