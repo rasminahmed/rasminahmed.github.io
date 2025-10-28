@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aim Trainer — Rasmin</title>
+  <style>
+    :root {
+      --bg: #0f172a; /* slate-900 */
+      --card: #111827; /* gray-900 */
+      --text: #e5e7eb; /* gray-200 */
+      --muted: #9ca3af; /* gray-400 */
+      --accent: #22d3ee; /* cyan-400 */
+      --accent-2: #a78bfa; /* violet-400 */
+      --danger: #ef4444; /* red-500 */
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 50% -10%, #1f2937 0%, var(--bg) 60%);
+      color: var(--text);
+      display: grid; place-items: center;
+    }
+    .wrap { width: min(920px, 92vw); }
+    header { text-align: center; margin: 24px 0; }
+    h1 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 32px); letter-spacing: .3px; }
+    p.sub { margin: 0; color: var(--muted); }
+
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+
+    .hud { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; margin-bottom: 12px; }
+    .stats { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .stat { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); padding: 8px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+
+    .controls { display: flex; gap: 10px; align-items: center; }
+    button { appearance: none; border: none; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    #startBtn { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #071018; }
+    #startBtn:disabled { filter: grayscale(0.8) brightness(0.8); cursor: not-allowed; }
+    #resetBtn { background: rgba(255,255,255,.06); color: var(--text); border: 1px solid rgba(255,255,255,.08); }
+
+    .board { position: relative; height: 500px; border-radius: 14px; overflow: hidden; border: 1px dashed rgba(255,255,255,.12); background: repeating-linear-gradient(45deg, rgba(255,255,255,.03), rgba(255,255,255,.03) 10px, transparent 10px, transparent 20px) , radial-gradient(600px 300px at 10% 110%, rgba(34,211,238,.06), rgba(167,139,250,.08)); }
+
+    .target { position: absolute; width: 48px; height: 48px; border-radius: 999px; background: radial-gradient(circle at 30% 30%, #fff 0%, #fff 8%, #111827 12%, #111827 36%, #22d3ee 36%, #22d3ee 48%, #111827 48%, #111827 100%);
+              display: grid; place-items: center; box-shadow: 0 6px 16px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.2);
+              transform: translate(-50%, -50%); user-select: none; }
+    .target:after { content: ""; width: 6px; height: 6px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px rgba(0,0,0,.35) inset; }
+
+    .toast { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+    .toast .msg { background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1); padding: 10px 14px; border-radius: 12px; backdrop-filter: blur(4px); font-weight: 600; transform: translateY(-6px); opacity: 0; transition: .2s ease; }
+    .toast.show .msg { opacity: 1; transform: translateY(0); }
+
+    footer { text-align: center; color: var(--muted); margin-top: 12px; font-size: 14px; }
+    a { color: var(--accent); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Aim Trainer</h1>
+      <p class="sub">30 seconds • click the target as many times as you can</p>
+    </header>
+
+    <section class="card">
+      <div class="hud">
+        <div class="stats">
+          <span class="stat">Time: <strong id="time">30.0</strong>s</span>
+          <span class="stat">Score: <strong id="score">0</strong></span>
+          <span class="stat">Accuracy: <strong id="acc">0%</strong></span>
+          <span class="stat">Best: <strong id="best">0</strong></span>
+        </div>
+        <div class="controls">
+          <button id="startBtn" aria-label="Start game">Start</button>
+          <button id="resetBtn" aria-label="Reset game" title="Reset without saving">Reset</button>
+        </div>
+      </div>
+
+      <div class="board" id="board" aria-label="Game board" role="application">
+        <button class="target" id="target" aria-label="Target" title="Click me!" style="left: 50%; top: 50%;"></button>
+        <div class="toast" id="toast"><div class="msg" id="toastMsg">Nice!</div></div>
+      </div>
+    </section>
+    <footer>
+      Built by <a href="https://github.com/rasminahmed" target="_blank" rel="noopener">Rasmin Ahmed</a>
+    </footer>
+  </div>
+
+  <span class="sr-only" id="live" aria-live="polite"></span>
+
+  <script>
+    const board = document.getElementById('board');
+    const target = document.getElementById('target');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const timeEl = document.getElementById('time');
+    const scoreEl = document.getElementById('score');
+    const accEl = document.getElementById('acc');
+    const bestEl = document.getElementById('best');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    const live = document.getElementById('live');
+
+    const GAME_SECONDS = 30;
+
+    let playing = false;
+    let startTs = 0;
+    let timerId = null;
+    let score = 0;
+    let clicks = 0;
+    let speed = 700; // ms between moves, will accelerate
+
+    // restore best from localStorage
+    const best = Number(localStorage.getItem('aim.best') || 0);
+    bestEl.textContent = best;
+
+    function rnd(min, max) { return Math.random() * (max - min) + min; }
+
+    function clamp(v, min, max) { return v < min ? min : v > max ? max : v; }
+
+    function moveTarget(animated=true) {
+      const rect = board.getBoundingClientRect();
+      const size = target.offsetWidth;
+      const pad = 6 + size/2; // keep inside bounds
+
+      const x = rnd(pad, rect.width - pad);
+      const y = rnd(pad, rect.height - pad);
+
+      if (animated) {
+        target.style.transition = 'transform .12s ease, left .12s ease, top .12s ease';
+      } else {
+        target.style.transition = 'none';
+      }
+      target.style.left = x + 'px';
+      target.style.top = y + 'px';
+    }
+
+    function setTimeLeft(sec) {
+      timeEl.textContent = sec.toFixed(1);
+    }
+
+    function updateAcc() {
+      const acc = clicks ? Math.round((score / clicks) * 100) : 0;
+      accEl.textContent = acc + '%';
+    }
+
+    function showToast(text) {
+      toastMsg.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 300);
+    }
+
+    function gameTick() {
+      const elapsed = (performance.now() - startTs) / 1000;
+      const left = clamp(GAME_SECONDS - elapsed, 0, GAME_SECONDS);
+      setTimeLeft(left);
+      if (left <= 0) return endGame();
+    }
+
+    function scheduleMove() {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => {
+        moveTarget();
+        // slightly speed up over time
+        speed = Math.max(260, speed * 0.985);
+        scheduleMove();
+      }, speed);
+    }
+
+    function startGame() {
+      if (playing) return;
+      playing = true;
+      startTs = performance.now();
+      score = 0; clicks = 0; speed = 700;
+      scoreEl.textContent = '0'; updateAcc();
+      setTimeLeft(GAME_SECONDS);
+      startBtn.disabled = true; startBtn.textContent = 'Playing…';
+      live.textContent = 'Game started';
+      moveTarget(false);
+      scheduleMove();
+      (function loop(){ if (!playing) return; gameTick(); requestAnimationFrame(loop); })();
+    }
+
+    function endGame() {
+      if (!playing) return;
+      playing = false;
+      clearTimeout(timerId);
+      startBtn.disabled = false; startBtn.textContent = 'Start';
+      const prevBest = Number(localStorage.getItem('aim.best') || 0);
+      if (score > prevBest) {
+        localStorage.setItem('aim.best', String(score));
+        bestEl.textContent = String(score);
+        showToast('New best! 🎉');
+        live.textContent = 'New best score';
+      } else {
+        showToast('Time!');
+        live.textContent = 'Time up';
+      }
+    }
+
+    // interactions
+    target.addEventListener('click', (e) => {
+      if (!playing) return;
+      e.stopPropagation();
+      score += 1; clicks += 1;
+      scoreEl.textContent = score;
+      updateAcc();
+      showToast(['Nice!','Clean!','Sharp!','Bang!','Got it!'][Math.floor(Math.random()*5)]);
+      moveTarget();
+    });
+
+    board.addEventListener('click', () => {
+      if (!playing) return;
+      clicks += 1; updateAcc();
+      // brief miss indicator
+      board.animate([{ outline: '2px solid transparent' }, { outline: `2px solid var(--danger)` }, { outline: '2px solid transparent' }], { duration: 220, easing: 'ease' });
+    });
+
+    startBtn.addEventListener('click', startGame);
+    resetBtn.addEventListener('click', () => {
+      playing = false; clearTimeout(timerId);
+      score = 0; clicks = 0; speed = 700;
+      scoreEl.textContent = '0'; updateAcc();
+      setTimeLeft(GAME_SECONDS);
+      startBtn.disabled = false; startBtn.textContent = 'Start';
+      moveTarget(false);
+      showToast('Reset');
+    });
+
+    // keyboard support
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') { e.preventDefault(); playing ? endGame() : startGame(); }
+      if (e.key.toLowerCase() === 'r') { resetBtn.click(); }
+    });
+
+    // place target after fonts/paint
+    window.addEventListener('load', () => moveTarget(false));
+  </script>
+</body>
+</html>
