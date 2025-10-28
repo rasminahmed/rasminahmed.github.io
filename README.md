@@ -11,7 +11,9 @@
       Welcome to my world!
     </p>
     <p>
-    Before I tell you about myself, lets play a game... ➡️ https://rasminahmed.github.io/aim-trainer.html<br>
+    Before I tell you about myself, lets play a game... ➡️<a href="https://rasminahmed.github.io/aim-trainer.html" target="_blank">
+  https://rasminahmed.github.io/aim-trainer.html
+</a>
     </p>
     <p>
      I am a passionate developer interested in web, open-source, and building meaningful digital experiences.
