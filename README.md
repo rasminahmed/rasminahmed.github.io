@@ -6,9 +6,9 @@
 </head>
 <body> 
   <div class="container">
-    <h1>Hey there, I'm Rasmin Ahmed 😃🌸</h1>
+    <h1>Hey there, I'm Rasmin Ahmed 😃🌸🐻🍕</h1>
     <p>
-      Welcome to my world!
+      Welcome to my world!🌎
     </p>
     <p>
     Before I tell you about myself, lets play a game... ➡️<a href="https://rasminahmed.github.io/aim-trainer.html" target="_blank">
@@ -22,22 +22,25 @@
     <p>
       My interests include: 
     <p>
-      Calisthenics training 🤸
+      <b>Calisthenics Training</b> 🤸
     <p>
       I have been training for the last 3 years and I have built a passion for it in the gym
         <p>
-      Traveling 🚀
+      <b>Traveling</b> 🚀
     <p>
       Traveling is a big part of my life as someone who has family in different parts of the world. Fun fact I grew up in Dubai!
     </p>
     <p>
-      Basketball 🏀
+      <b>Basketball</b> 🏀
     </p>
     <p>
       Sports has been a big part of my life ever since I was young, basketball in particular is a hobby that I love
     </p>
     <p>
       I love exploring new technologies, working in a team, and sharing what I learn.
+    </p>
+    <p>
+      Here's a quote I love - "<i>The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown.</i>” - H.P. Lovecraft 
     </p>
     <div class="contact">
       <h2>Let's Connect!</h2>
