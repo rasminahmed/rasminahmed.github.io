@@ -16,12 +16,24 @@
   <div class="container">
     <h1>Hey there, I'm Rasmin Ahmed :) </h1>
     <p>
-      Welcome to my personal website.<br>
+      Welcome to my world!<br>
       I am a passionate developer interested in web, open-source, and building meaningful digital experiences.
     </p>
     <h2>About Me</h2>
     <p>
-      My interests include Calisthenics training, Wellness, Travelling, Basketball
+      My interests include: 
+    <p>
+      Calisthenics training 🤸
+      <p>
+      I have been training for the last 3 years and I have built a passion for it in the gym
+        <p>
+      Traveling 🚀
+          <p>
+      Traveling is a big part of my life as someone who has family in different parts of the world. Fun fact I grew up in Dubai!
+      Basketball 🏀
+            <p>
+      Sports have been a big part of my lif ever since I was young, basketball in particular is a hobby that I love
+    
       I love exploring new technologies, collaborating on projects, and sharing what I learn.
     </p>
     <h2>Projects</h2>
