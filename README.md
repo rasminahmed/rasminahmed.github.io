@@ -51,6 +51,5 @@
         LinkedIn: <a href="https://www.linkedin.com/in/rasminahmed/" target="_blank">linkedin.com/in/rasminahmed</a>
       </p>
     </div>
-  </div>
 </body>
 </html>
