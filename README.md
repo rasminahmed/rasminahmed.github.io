@@ -12,7 +12,7 @@
     .contact { margin-top: 28px;}
   </style>
 </head>
-<body>
+<body> 
   <div class="container">
     <h1>Hi, I'm Rasmin Ahmed!</h1>
     <p>
