@@ -37,18 +37,16 @@
     <p>
       I love exploring new technologies, working in a team, and sharing what I learn.
     </p>
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="https://github.com/rasminahmed/me-myself-and-I">me-myself-and-I</a></li>
-      <!-- Add more projects here -->
-    </ul>
     <div class="contact">
-      <h2>Contact</h2>
+      <h2>Let's Connect!</h2>
       <p>
         Email: <a href="mailto:your-email@example.com">rasminahmed01@gmail.com</a>
       </p>
       <p>
         GitHub: <a href="https://github.com/rasminahmed">rasminahmed</a>
+      </p>
+      <p>
+        LinkedIn: <a href="https://www.linkedin.com/in/rasminahmed/" target="_blank">linkedin.com/in/rasminahmed</a>
       </p>
     </div>
   </div>
