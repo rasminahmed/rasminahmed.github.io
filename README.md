@@ -14,9 +14,9 @@
 </head>
 <body> 
   <div class="container">
-    <h1>Hey there, I'm Rasmin Ahmed :) </h1>
+    <h1>Hey there, I'm Rasmin Ahmed 😃🌸 </h1>
     <p>
-      Welcome to my world!<br>
+      Welcome to my world! I want to tell you more about myself, but first, lets play a game... ➡️ https://rasminahmed.github.io/aim-trainer.html<br>
       I am a passionate developer interested in web, open-source, and building meaningful digital experiences.
     </p>
     <h2>About Me</h2>
