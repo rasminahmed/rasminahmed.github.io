@@ -14,7 +14,7 @@
 </head>
 <body> 
   <div class="container">
-    <h1>Hi, I'm Rasmin Ahmed!</h1>
+    <h1>Hey there, I'm Rasmin Ahmed :) </h1>
     <p>
       Welcome to my personal website.<br>
       I am a passionate developer interested in web, open-source, and building meaningful digital experiences.
