@@ -24,14 +24,14 @@
       My interests include: 
     <p>
       Calisthenics training 🤸
-      <p>
+    <p>
       I have been training for the last 3 years and I have built a passion for it in the gym
         <p>
       Traveling 🚀
-          <p>
+    <p>
       Traveling is a big part of my life as someone who has family in different parts of the world. Fun fact I grew up in Dubai!
       Basketball 🏀
-            <p>
+    <p>
       Sports have been a big part of my lif ever since I was young, basketball in particular is a hobby that I love
     
       I love exploring new technologies, collaborating on projects, and sharing what I learn.
