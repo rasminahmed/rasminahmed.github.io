@@ -1,4 +1,4 @@
-IMG_E7991.HEIC
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,7 @@ IMG_E7991.HEIC
 </head>
 <body> 
   <div class="container">
-    <h1>Hey there, I'm Rasmin Ahmed 😃🌸 </h1>
+    <h1>Hey there, I'm Rasmin Ahmed 😃🌸IMG_E7991.HEIC </h1>
     <p>
       Welcome to my world!
     </p>
