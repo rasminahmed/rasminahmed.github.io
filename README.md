@@ -2,19 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rasmin Ahmed | About Me</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    .container { max-width: 700px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
-    h1 { color: #333; }
-    p { color: #555; line-height: 1.6;}
-    .contact { margin-top: 28px;}
-  </style>
+
 </head>
 <body> 
   <div class="container">
-    <h1>Hey there, I'm Rasmin Ahmed 😃🌸IMG_E7991.HEIC </h1>
+    <h1>Hey there, I'm Rasmin Ahmed 😃🌸</h1>
     <p>
       Welcome to my world!
     </p>
