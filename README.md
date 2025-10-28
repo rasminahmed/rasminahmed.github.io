@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
+    <img src="IMG_E7991.HEIC" alt="Rasmin Ahmed" class="profile">
 </head>
 <body> 
   <div class="container">
