@@ -12,16 +12,18 @@
     </p>
     <p>
     Before I tell you about myself, lets play a game... ➡️
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <body>
 
-<button onclick="window.location.href='https://rasminahmed.github.io/aim-trainer.html'">
-  Click me to play a game.
-</button>
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = https://rasminahmed.github.io/aim-trainer.html">
+Click me to play a game.</button>
+
+<p id="demo"></p>
 
 </body>
-</html>
+</html> 
 </a>
     </p>
     <p>
