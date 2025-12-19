@@ -11,8 +11,7 @@
       Welcome to my world!🌎
     </p>
     <p>
-    Before I tell you about myself, lets play a game... ➡️<a href="https://rasminahmed.github.io/aim-trainer.html" target="_blank">
-  https://rasminahmed.github.io/aim-trainer.html
+    Before I tell you about myself, lets play a game... ➡️
     <!DOCTYPE html>
 <html>
 <body>
