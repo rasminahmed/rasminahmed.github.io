@@ -8,11 +8,10 @@
   <div class="container">
     <h1>Hey there, I'm Rasmin Ahmed 😃🌸🐻🍕</h1>
     <p>
-      Welcome to my world!🌎
+      A few words to describe myself: passionate software developer looking to make an impact
     </p>
     <p>
-    Before I tell you about myself, lets play a game... ➡️
-    <!DOCTYPE html>
+    Before I tell you more about myself, lets play a game... ➡️
 <html>
 <body>
 
