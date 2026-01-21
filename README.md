@@ -11,13 +11,10 @@
       A few words to describe myself: passionate software developer looking to make an impact
     </p>
     <p>
-    Before I tell you more about myself, lets play a game... ➡️
+    Before I tell you more about myself, lets play a game... ➡️ https://rasminahmed.github.io/aim-trainer.html
 <html>
 <body>
 
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = https://rasminahmed.github.io/aim-trainer.html">
-Click me to play a game.</button>
 
 <p id="demo"></p>
 
