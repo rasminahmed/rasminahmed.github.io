@@ -11,7 +11,13 @@
       A few words to describe myself: passionate software developer looking to make an impact
     </p>
     <p>
-    Before I tell you more about myself, lets play a game... ➡️ https://rasminahmed.github.io/aim-trainer.html
+    Before I tell you more about myself, lets play a game... ➡️    <a 
+      class="aim-button"
+      href="https://rasminahmed.github.io/aim-trainer.html"
+      target="_blank"
+    >
+      🎯 Play Aim Trainer
+    </a>
 <html>
 <body>
 
