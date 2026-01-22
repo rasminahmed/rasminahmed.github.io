@@ -17,7 +17,7 @@
       target="_blank"
     >
       🎯 Play Aim Trainer
-    </a>
+
 <html>
 <body>
 
