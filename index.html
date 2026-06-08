@@ -1,12 +1,128 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rasmin Ahmed — Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Rasmin Ahmed</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f6f1f1;
+      color: #2d1f23;
+    }
+
+    /* NAVBAR (matches your style) */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 80px;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    nav .logo {
+      color: #d16b86;
+      font-weight: 500;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px;
+    }
+
+    .left {
+      max-width: 500px;
+    }
+
+    .tag {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #d16b86;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .highlight {
+      color: #d16b86;
+      font-style: italic;
+    }
+
+    .desc {
+      margin-top: 20px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* IMAGE RIGHT SIDE */
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile {
+      width: 380px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* BUTTONS */
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: none;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #d16b86;
+      color: white;
+    }
+
+    .secondary {
+      background: transparent;
+      border: 1px solid #d16b86;
+      color: #d16b86;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile {
+        width: 250px;
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
