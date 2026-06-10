@@ -751,5 +751,69 @@
     item.style.transitionDelay = `${i * 0.08}s`;
   });
 </script>
+
+
+
+
+<script id="kirby-follower">
+(function() {
+  const el = document.createElement('div');
+  el.style.cssText = 'position:fixed;pointer-events:none;z-index:9999;width:80px;height:80px;';
+
+  const imgEl = document.createElement('img');
+  imgEl.src = 'kirby.jpg';
+  imgEl.style.cssText = 'width:80px;height:80px;object-fit:contain;image-rendering:pixelated;';
+  el.appendChild(imgEl);
+
+  const bubble = document.createElement('div');
+  bubble.style.cssText = 'position:absolute;background:#fff;border:1.5px solid #E8849E;border-radius:10px;padding:4px 10px;font-size:12px;font-family:DM Sans,sans-serif;color:#2B1A22;white-space:nowrap;bottom:82px;left:50%;transform:translateX(-50%);opacity:0;transition:opacity 0.3s;pointer-events:none;';
+  el.appendChild(bubble);
+
+  let cx = window.innerWidth/2, cy = window.innerHeight/2;
+  let mx = cx, my = cy;
+  let waddlePhase = 0, lastDir = 1, bubbleTimer = 0;
+  const quips = ['Poyo!','Hi!','Wee~','Follow me!',':D','Poyo poyo!'];
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX - 40;
+    my = e.clientY - 40;
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('a, button')) return;
+    bubble.textContent = quips[Math.floor(Math.random()*quips.length)];
+    bubble.style.opacity = '1';
+    bubbleTimer = 80;
+    imgEl.style.transform = 'scale(1.2)';
+    setTimeout(() => imgEl.style.transform = '', 180);
+  });
+
+  function lerp(a,b,t) { return a+(b-a)*t; }
+
+  function tick() {
+    const dx = mx - cx, dy = my - cy;
+    const dist = Math.sqrt(dx*dx+dy*dy);
+    const lag = 0.09 + Math.min(dist,200)*0.0003;
+    cx = lerp(cx, mx, lag);
+    cy = lerp(cy, my, lag);
+
+    if (dist > 2) { lastDir = dx > 0 ? 1 : -1; waddlePhase += 0.18; }
+    const bob = Math.sin(waddlePhase) * (dist > 5 ? 3 : 1);
+    const squishX = dist > 60 ? 1.06 : 1;
+    const squishY = dist > 60 ? 0.92 : 1;
+
+    el.style.left = cx + 'px';
+    el.style.top = (cy + bob) + 'px';
+    imgEl.style.transform = `scaleX(${lastDir * squishX}) scaleY(${squishY})`;
+
+    if (bubbleTimer > 0) { bubbleTimer--; if (bubbleTimer === 0) bubble.style.opacity = '0'; }
+    requestAnimationFrame(tick);
+  }
+
+  document.body.appendChild(el);
+  tick();
+})();
+</script>
+
 </body>
 </html>
