@@ -4,11 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rasmin Ahmed — Software Engineer</title>
-<img src="profile.jpg" alt="Rasmin Ahmed" class="profile">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +36,6 @@
     overflow-x: hidden;
   }
 
-  /* ─── DECORATIVE BACKGROUND ─── */
   body::before {
     content: '';
     position: fixed; inset: 0; z-index: -1;
@@ -58,13 +55,8 @@
   }
   .nav-inner {
     max-width: 900px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: flex-end;
     padding: 1.1rem 2rem;
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600; font-size: 1.25rem;
-    color: var(--pink-deep); letter-spacing: 0.5px;
   }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
@@ -80,25 +72,76 @@
   /* ─── HERO ─── */
   .hero {
     padding: 7rem 0 5rem;
-    display: grid; grid-template-columns: 1fr auto;
-    gap: 3rem; align-items: end;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
   }
-  .hero-eyebrow {
-    font-size: 0.72rem; letter-spacing: 3.5px; text-transform: uppercase;
-    color: var(--pink-mid); margin-bottom: 1.2rem;
-    display: flex; align-items: center; gap: 0.6rem;
+
+  .hero-name-block {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.4rem;
   }
-  .hero-eyebrow::before {
-    content: ''; display: block;
-    width: 32px; height: 1px; background: var(--pink-mid);
+
+  .hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--pink-light);
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(201, 84, 122, 0.15);
   }
+
+  .hero-avatar-fallback {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--pink-blush);
+    border: 3px solid var(--pink-light);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
   .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 8vw, 5.5rem);
-    font-weight: 300; line-height: 1.05;
-    letter-spacing: -1px; margin-bottom: 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
   }
-  .hero h1 em { font-style: italic; color: var(--pink-deep); }
+
+  .hero h1 .prompt {
+    color: var(--pink-mid);
+    font-weight: 300;
+    font-size: 0.85em;
+  }
+
+  .hero h1 .name-typed {
+    color: var(--pink-deep);
+    font-weight: 500;
+  }
+
+  .hero h1 .cursor-block {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--pink-deep);
+    vertical-align: text-bottom;
+    animation: blink 0.9s step-end infinite;
+    margin-left: 2px;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
   .hero-subtitle {
     font-size: 1rem; color: var(--text-mid); max-width: 420px;
     margin-bottom: 2.2rem; line-height: 1.8;
@@ -106,13 +149,13 @@
   .hero-typed {
     font-size: 0.88rem; color: var(--text-muted);
     min-height: 1.5rem; margin-bottom: 2rem;
+    font-family: 'JetBrains Mono', monospace;
   }
-  .cursor {
+  .typed-cursor {
     display: inline-block;
     animation: blink 0.9s step-end infinite;
     color: var(--pink-deep);
   }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn {
@@ -131,23 +174,6 @@
     border: 1.5px solid var(--pink-light);
   }
   .btn-ghost:hover { border-color: var(--pink-deep); transform: translateY(-2px); }
-
-  .hero-deco {
-    width: 180px; height: 220px; flex-shrink: 0;
-    background: var(--pink-blush);
-    border-radius: 120px 120px 60px 60px;
-    border: 1px solid var(--pink-light);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem; color: var(--pink-light);
-    position: relative; overflow: hidden;
-    user-select: none;
-  }
-  .hero-deco::after {
-    content: '✦';
-    position: absolute; bottom: 1rem; right: 1.2rem;
-    font-size: 1rem; color: var(--pink-mid); opacity: 0.6;
-  }
 
   /* ─── SECTION SHARED ─── */
   section { padding: 5rem 0; }
@@ -355,13 +381,14 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 680px) {
     .hero { grid-template-columns: 1fr; }
-    .hero-deco { display: none; }
     .about-strip { grid-template-columns: 1fr; padding: 2rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .edu-card { flex-direction: column; }
     .research-card { grid-template-columns: 1fr; }
     .skills-section { padding: 2rem; }
+    .hero-name-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .hero h1 { font-size: 1.6rem; }
   }
 </style>
 </head>
@@ -370,7 +397,6 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">Rasmin Ahmed</div>
     <ul class="nav-links">
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -384,24 +410,26 @@
 <div class="container">
   <div class="hero">
     <div>
-      <div class="hero-eyebrow">Computer Science @ UCF</div>
-      <h1>
-        Hi, I'm<br>
-        <em>Rasmin</em><br>
-        Ahmed.
-      </h1>
+      <div class="hero-name-block">
+        <img src="profile.jpg" alt="Rasmin Ahmed" class="hero-avatar"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="hero-avatar-fallback" style="display:none;">RA</div>
+        <h1>
+          <span class="prompt">~/</span> Hi, I'm<br>
+          <span class="name-typed" id="name-typed"></span><span class="cursor-block" id="name-cursor"></span>
+        </h1>
+      </div>
       <p class="hero-subtitle">
         Software engineer passionate about building full-stack applications, developer tools, and systems that actually make a difference.
       </p>
       <div class="hero-typed">
-        <span id="typed-text"></span><span class="cursor">|</span>
+        <span id="typed-text"></span><span class="typed-cursor">_</span>
       </div>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Get in touch →</a>
         <a href="#projects" class="btn btn-ghost">See my work</a>
       </div>
     </div>
-    <div class="hero-deco">✿</div>
   </div>
 </div>
 
@@ -654,30 +682,55 @@
 </footer>
 
 <script>
-  // ── TYPING ANIMATION ──
+  // ── NAME TYPING ANIMATION ──
+  const fullName = "Rasmin Ahmed.";
+  const nameEl = document.getElementById('name-typed');
+  const nameCursor = document.getElementById('name-cursor');
+  let nameIdx = 0;
+  let nameDone = false;
+
+  function typeName() {
+    if (nameIdx <= fullName.length) {
+      nameEl.textContent = fullName.slice(0, nameIdx);
+      nameIdx++;
+      setTimeout(typeName, nameIdx < 8 ? 80 : 70);
+    } else {
+      nameDone = true;
+      // After name is done, stop blinking cursor and start subtitle typer
+      nameCursor.style.display = 'none';
+      startSubtypeLoop();
+    }
+  }
+  typeName();
+
+  // ── SUBTITLE TYPING ANIMATION ──
   const phrases = [
-    "full-stack developer & security researcher.",
-    "building things at UCF's Appleseed Labs.",
-    "React Native + Python + C++ enthusiast.",
-    "turning ideas into working software.",
-    "open to internships & cool projects ✦",
+    "// full-stack developer & security researcher",
+    "// building things at UCF's Appleseed Labs",
+    "// React Native + Python + C++ enthusiast",
+    "// turning ideas into working software",
+    "// open to internships & cool projects",
   ];
   let pi = 0, ci = 0, deleting = false, paused = false;
   const el = document.getElementById('typed-text');
+
+  function startSubtypeLoop() {
+    typeLoop();
+  }
+
   function typeLoop() {
     const phrase = phrases[pi];
     if (paused) { setTimeout(typeLoop, 1800); paused = false; return; }
     if (!deleting) {
       el.textContent = phrase.slice(0, ci + 1); ci++;
       if (ci === phrase.length) { paused = true; deleting = true; }
-      setTimeout(typeLoop, 60);
+      setTimeout(typeLoop, 50);
     } else {
       el.textContent = phrase.slice(0, ci - 1); ci--;
       if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-      setTimeout(typeLoop, 30);
+      setTimeout(typeLoop, 25);
     }
   }
-  typeLoop();
 
   // ── SCROLL FADE IN ──
   const observer = new IntersectionObserver((entries) => {
@@ -691,7 +744,6 @@
 
   document.querySelectorAll('.fade-section, .exp-item, .project-card').forEach(el => observer.observe(el));
 
-  // stagger project cards
   document.querySelectorAll('.project-card').forEach((card, i) => {
     card.style.transitionDelay = `${i * 0.1}s`;
   });
